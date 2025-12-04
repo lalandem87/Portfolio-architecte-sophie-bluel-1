@@ -16,3 +16,20 @@ async function loadWorks() {
   });
 }
 loadWorks();
+
+const filterPart = document.querySelector(".works-filter");
+const btnAll = document.createElement("button");
+btnAll.textContent = "Tous";
+filterPart.appendChild(btnAll);
+
+async function loadCategories() {
+  const response = await fetch("http://localhost:5678/api/categories");
+  const categories = await response.json();
+  for (let i = 0; i < categories.length; i++) {
+    const btnfilters = document.createElement("button");
+    btnfilters.textContent = categories[i].name;
+    filterPart.appendChild(btnfilters);
+  }
+}
+
+loadCategories();
