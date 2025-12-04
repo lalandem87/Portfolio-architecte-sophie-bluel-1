@@ -143,6 +143,7 @@ button {
 	width: 100%;
 	text-wrap: nowrap;
 	font-family: 'Work Sans' ;
+	cursor: pointer;
 }
 
 #portfolio h2 {
