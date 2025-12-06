@@ -82,10 +82,12 @@ async function loadCategories() {
 initGallery();
 loadCategories();
 
+// function to give adminAcces to the web site
 function adminAccess() {
   return localStorage.getItem("token") !== null;
 }
 
+// condition if function adminAcces is fullfiled
 if (adminAccess()) {
   const editMode = document.getElementById("mode-edition");
   editMode.style.display = "flex";
@@ -98,17 +100,63 @@ if (adminAccess()) {
   const adminMyProject = document.getElementById("admin-my-project");
   adminMyProject.classList.add("admin-my-project");
   const fontAwesome_a = document.getElementById("font-awesome-a");
-  const modifiedWorks = document.createElement("a");
-  modifiedWorks.innerText = "modifier";
-  fontAwesome_a.appendChild(modifiedWorks);
+  const btnModifiedWorks = document.createElement("button");
+  btnModifiedWorks.textContent = "modifier";
+  fontAwesome_a.appendChild(btnModifiedWorks);
   const fontAwesome = document.createElement("i");
   fontAwesome.classList.add("fa-solid", "fa-pen-to-square");
   fontAwesome_a.appendChild(fontAwesome);
   fontAwesome_a.classList.add("font-awesome-a");
+
+  // btnModifiedWorks open the modale
+  btnModifiedWorks.addEventListener("click", () => {
+    launchModale();
+  });
+
+  // change login to logout
   const aLogin = document.getElementById("a-login");
   aLogin.textContent = "logout";
+
+  // disconnect when token is remove
   aLogin.addEventListener("click", () => {
     localStorage.removeItem("token");
     window.location.href = "index.html";
   });
+}
+
+// function that start modale
+function launchModale() {
+  const modale = document.createElement("div");
+  modale.classList.add("modale");
+  const closeIcon = document.createElement("i");
+  closeIcon.classList.add("fa-solid", "fa-xmark");
+  modale.appendChild(closeIcon);
+  const titleModale = document.createElement("h4");
+  titleModale.innerText = "Galerie photo";
+  modale.appendChild(titleModale);
+  const imgContainer = document.createElement("div");
+  imgContainer.classList.add("img-container");
+  modale.appendChild(imgContainer);
+  allWorks.forEach((works) => {
+    const imgProject = document.createElement("img");
+    imgProject.src = works.imageUrl;
+    const trashCan = document.createElement("i");
+    trashCan.classList.add("fa-solid", "fa-trash-can");
+    imgContainer.appendChild(imgProject);
+    imgContainer.appendChild(trashCan);
+  });
+  modale.appendChild(imgContainer);
+
+  // We create the form in the modale
+  const divFormModale = document.createElement("div");
+  divFormModale.classList.add("formModale");
+  const formModale = document.createElement("form");
+  const btnAddImg = document.createElement("button");
+  btnAddImg.textContent = "Ajouter une photo";
+  divFormModale.appendChild(formModale);
+  divFormModale.appendChild(btnAddImg);
+  modale.appendChild(divFormModale);
+
+  // add modale to body
+  document.body.appendChild(modale);
 }
