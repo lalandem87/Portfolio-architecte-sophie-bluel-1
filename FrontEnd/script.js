@@ -81,3 +81,34 @@ async function loadCategories() {
 // Initialize everything
 initGallery();
 loadCategories();
+
+function adminAccess() {
+  return localStorage.getItem("token") !== null;
+}
+
+if (adminAccess()) {
+  const editMode = document.getElementById("mode-edition");
+  editMode.style.display = "flex";
+  const sentenceModeEdition = document.createElement("p");
+  sentenceModeEdition.innerText = "Mode edition";
+  editMode.appendChild(sentenceModeEdition);
+  editMode.classList.add("adminEditMode");
+  const FilterPart = document.querySelector(".works-filter");
+  FilterPart.style.display = "none";
+  const adminMyProject = document.getElementById("admin-my-project");
+  adminMyProject.classList.add("admin-my-project");
+  const fontAwesome_a = document.getElementById("font-awesome-a");
+  const modifiedWorks = document.createElement("a");
+  modifiedWorks.innerText = "modifier";
+  fontAwesome_a.appendChild(modifiedWorks);
+  const fontAwesome = document.createElement("i");
+  fontAwesome.classList.add("fa-solid", "fa-pen-to-square");
+  fontAwesome_a.appendChild(fontAwesome);
+  fontAwesome_a.classList.add("font-awesome-a");
+  const aLogin = document.getElementById("a-login");
+  aLogin.textContent = "logout";
+  aLogin.addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+  });
+}

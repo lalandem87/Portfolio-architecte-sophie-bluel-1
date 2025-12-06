@@ -58,10 +58,52 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
+.mode-edition {
+	display: none;
+}
+
+.adminEditMode {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	background-color: #000000;
+	color: #FFFFFF;
+	height:  50px;
+	margin-bottom: 38px;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
+}
+
+.logo-instagram {
+	height: 20px;
+	width: 20px;
+}
+
+.admin-my-project {
+	display: flex;
+	align-items: center;
+	margin-bottom: 100px;
+	margin-left: 120px;
+	gap: 30px;
+	
+}
+
+.font-awesome-a {
+	display: flex;
+	flex-direction: row-reverse;
+	gap: 10px;
+}
+
+
+
+.margin-edit-btn {
+	margin-left: 5px;
 }
 
 h1{
@@ -249,4 +291,5 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
 
