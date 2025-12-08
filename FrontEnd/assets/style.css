@@ -204,6 +204,102 @@ button {
 	cursor: pointer;
 }
 
+/* MODALE */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* flou / assombrissement */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* superpose */
+}
+
+
+.modale {
+	position: absolute;
+	background: #FFFFFF;
+	height: 688px;
+	width: 630px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.fa-xmark {
+	cursor: pointer;
+}
+
+section#portfolio {
+	position: relative;
+}
+
+.modale h4 {
+	font-size: 26px;
+	margin-bottom: 30px;
+}
+
+i.fa-solid.fa-xmark {
+	margin-top: 30px;
+    margin-left: 550px;
+	margin-bottom: 10px;
+	font-size: 17px;
+}
+
+.image-wrapper {
+	position: relative;
+}
+
+.img-container {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	gap: 10px;
+    width: 70%;
+	border-bottom: 1px solid #B3B3B3;
+	padding-bottom: 65px;
+}
+
+.modale button {
+	font-size: 14px;
+	background-color: #1D6154;
+	color: #FFFFFF;
+	border-radius: 60px;
+	padding: 0px 60px;
+	margin-top: 40px;
+
+}
+.modale img {
+	display: block;
+	height: auto;
+	width: 100%;
+	margin-top: 15px;
+}
+
+.fa-trash-can{
+	position: absolute;
+  top: 20px;
+  right: 6px;
+  background: #000000;
+  color: white;
+  border: none;
+  font-size: 10px;
+  width: 17px;
+  height: 17px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+
 #portfolio h2 {
 	text-align: center;
 }

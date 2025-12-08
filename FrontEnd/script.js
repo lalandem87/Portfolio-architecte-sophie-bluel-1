@@ -126,6 +126,8 @@ if (adminAccess()) {
 
 // function that start modale
 function launchModale() {
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
   const modale = document.createElement("div");
   modale.classList.add("modale");
   const closeIcon = document.createElement("i");
@@ -138,12 +140,15 @@ function launchModale() {
   imgContainer.classList.add("img-container");
   modale.appendChild(imgContainer);
   allWorks.forEach((works) => {
+    const imageWrapper = document.createElement("div");
+    imageWrapper.classList.add("image-wrapper");
     const imgProject = document.createElement("img");
     imgProject.src = works.imageUrl;
     const trashCan = document.createElement("i");
     trashCan.classList.add("fa-solid", "fa-trash-can");
-    imgContainer.appendChild(imgProject);
-    imgContainer.appendChild(trashCan);
+    imageWrapper.appendChild(imgProject);
+    imageWrapper.appendChild(trashCan);
+    imgContainer.appendChild(imageWrapper);
   });
   modale.appendChild(imgContainer);
 
@@ -157,6 +162,14 @@ function launchModale() {
   divFormModale.appendChild(btnAddImg);
   modale.appendChild(divFormModale);
 
-  // add modale to body
-  document.body.appendChild(modale);
+  // add modale to overlay
+  document.body.appendChild(overlay);
+  overlay.appendChild(modale);
+
+  document.body.classList.add("modale-active");
+
+  closeIcon.addEventListener("click", () => {
+    modale.remove();
+    overlay.classList.remove("overlay");
+  });
 }
